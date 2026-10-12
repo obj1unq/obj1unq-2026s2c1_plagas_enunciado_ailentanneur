@@ -2,11 +2,13 @@ class Plaga{
     var property cantDePoblacion = 0
 
     method transmitenEnfermedad(){
-        cantDePoblacion >= 10
+        return cantDePoblacion >= 10
     }
     method nivelDeDaño()
 
-    method ataque()
+   method efectoDeAtaque(){
+        cantDePoblacion += cantDePoblacion * 0.1
+   }
 
     method poblacion(){
         return cantDePoblacion
@@ -25,20 +27,27 @@ class Cucaracha inherits Plaga{
         return cantDePoblacion / 2
     }
     override method transmitenEnfermedad(){
-        self.pesoPromedio() >= 10
+        return self.pesoPromedio() >= 10
+    }
+    override method efectoDeAtaque(){
+        super()
+        self.pesoPromedio() + 2
     }
 
 }
 class Pulga inherits Plaga{
     override method nivelDeDaño(){
-        self.cantDePoblacion() * 2
+        return self.cantDePoblacion() * 2
     }
 
 }
 
 class Garrapata inherits Plaga{
     override method nivelDeDaño(){
-        self.cantDePoblacion() * 2
+       return  self.cantDePoblacion() * 2
+    }
+    override method efectoDeAtaque(){
+        cantDePoblacion += cantDePoblacion * 0.2
     }
 }
 
@@ -48,7 +57,7 @@ class Mosquito inherits Plaga{
     }
     
     override method transmitenEnfermedad() {
-      super() % 3 == 0
+      return super() && self.cantDePoblacion() % 3 == 0
     }  
 
 }

@@ -1,26 +1,45 @@
-object hogar{
+class Elemento{
+    method esBuena()
+    method esAtacada(unaPlaga){
+        unaPlaga.efectoDeAtaque()
+    }
+}
+
+class Hogar inherits Elemento{
     var property nivelDeMugre = 0
     var property confort = 0
 
-    method esBuena(){
+    override method esBuena(){
        return (confort / 2) >= nivelDeMugre
 
     }
-
-
-}object huerta{
+    override method esAtacada(unaPlaga){
+        nivelDeMugre += unaPlaga.nivelDeDaño()
+    }
+}
+class Huerta inherits Elemento{
     var property capacidad = 0
     var property nivelDeProduccion = 0
-    method esBuena(){
-        return capacidad > nivelDeProduccion
+    override method esBuena(){
+       return capacidad > nivelDeProduccion
     }
-    
+    override method esAtacada(unaPlaga){
+        if (unaPlaga.transmitenEnfermedad()){
+            capacidad -= (unaPlaga.nivelDeDaño() * 0.1) - 10 
+    }
+        else capacidad -= (unaPlaga.nivelDeDaño() * 0.1)
 }
-object mascota{
+}
+class Mascota inherits Elemento{
     var property  nivelDeSalud = 0
-    method esBuena(){
+    override method esBuena(){
         return nivelDeSalud > 250 
-    }    
+    }   
+    override method esAtacada(unaPlaga) {
+        if(unaPlaga.transmitenEnfermedad()){
+            nivelDeSalud -= unaPlaga.nivelDeDaño()
+        }
+    }
 
 }
 object barrio{
