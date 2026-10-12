@@ -1,9 +1,64 @@
-import example.pepita
+import plagas.*
+import elemento.*
+describe "elementos" {
+    test "es un hogar bueno" {
+    hogar.nivelDeMugre(10)
+    hogar.confort(30)
+    assert.equals(true, hogar.esBuena())
+}
+test "no es un hogar bueno" {
+    hogar.nivelDeMugre(10)
+    hogar.confort(18)
+    assert.equals(false, hogar.esBuena())
+}
 
-describe "group of tests for pepita" {
+test "es una huerta buena" {
+    huerta.capacidad(50)
+    huerta.nivelDeProduccion(30)
+    assert.equals(true, huerta.esBuena())
+}
+test "no es una huerta buena" {
+    huerta.capacidad(25)
+    huerta.nivelDeProduccion(30)
+    assert.equals(false, huerta.esBuena())
+}
+test "es una mascota buena"{
+    mascota.nivelDeSalud(300)
+    assert.equals(true, mascota.esBuena())
+}
+test "no es una mascota buena"{
+    mascota.nivelDeSalud(200)
+    assert.equals(false, mascota.esBuena())
+}
+test "es un barrio copado"{
+    hogar.nivelDeMugre(10)
+    hogar.confort(30)
+    barrio.agregarElemento(hogar)
+    mascota.nivelDeSalud(200)
+    barrio.agregarElemento(mascota)
+    huerta.capacidad(50)
+    huerta.nivelDeProduccion(30)
+    barrio.agregarElemento(huerta)
+    assert.equals([hogar, mascota, huerta], barrio.elementos())
+    assert.that(barrio.esCopado() )
+}
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
-  }
-
+test "no es un barrio copado"{
+    hogar.nivelDeMugre(5)
+    hogar.confort(8)
+    barrio.agregarElemento(hogar)
+    mascota.nivelDeSalud(200)
+    barrio.agregarElemento(mascota)
+    huerta.capacidad(50)
+    huerta.nivelDeProduccion(30)
+    barrio.agregarElemento(huerta)
+    assert.equals([hogar, mascota, huerta], barrio.elementos())
+    assert.that(!barrio.esCopado() )
+}
+}
+describe"plagas"{
+    const cucaracha = new Cucaracha(cantDePoblacio() = 100)
+    test "daño de cucaracha"{
+        cucaracha.nivelDeDaño()
+    }
 }
