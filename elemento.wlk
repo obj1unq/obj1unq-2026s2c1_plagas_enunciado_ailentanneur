@@ -15,6 +15,7 @@ class Hogar inherits Elemento{
     }
     override method esAtacada(unaPlaga){
         nivelDeMugre += unaPlaga.nivelDeDaño()
+        super(unaPlaga)
     }
 }
 class Huerta inherits Elemento{
@@ -25,9 +26,10 @@ class Huerta inherits Elemento{
     }
     override method esAtacada(unaPlaga){
         if (unaPlaga.transmitenEnfermedad()){
-            capacidad -= (unaPlaga.nivelDeDaño() * 0.1) - 10 
+            capacidad -= (unaPlaga.nivelDeDaño() * 0.1) + 10
     }
         else capacidad -= (unaPlaga.nivelDeDaño() * 0.1)
+        super(unaPlaga)
 }
 }
 class Mascota inherits Elemento{
@@ -39,6 +41,7 @@ class Mascota inherits Elemento{
         if(unaPlaga.transmitenEnfermedad()){
             nivelDeSalud -= unaPlaga.nivelDeDaño()
         }
+        super(unaPlaga)
     }
 
 }

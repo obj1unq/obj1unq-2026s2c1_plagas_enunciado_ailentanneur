@@ -19,19 +19,21 @@ class Plaga{
 
 class Cucaracha inherits Plaga{
     var property peso = 0
+
     method pesoPromedio(){
-    return (peso * cantDePoblacion) / cantDePoblacion
+    return peso
 
     }
     override method nivelDeDaño(){
         return cantDePoblacion / 2
     }
     override method transmitenEnfermedad(){
-        return self.pesoPromedio() >= 10
+        return super() && self.pesoPromedio() >= 10
     }
+   
     override method efectoDeAtaque(){
         super()
-        self.pesoPromedio() + 2
+        peso += 2
     }
 
 }
