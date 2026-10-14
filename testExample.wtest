@@ -7,49 +7,49 @@ describe "elementos" {
     const huertaDos = new Huerta( capacidad= 25, nivelDeProduccion = 30 )
     const mascota = new Mascota (nivelDeSalud = 300)
     const mascotaDos = new Mascota(nivelDeSalud = 250)
-test "es un hogar bueno" {
-    assert.equals(true, hogar.esBuena())
-}
-test "no es un hogar bueno" { 
-    assert.equals(false, hogarDos.esBuena())
-}
+    test "es un hogar bueno" {
+        assert.equals(true, hogar.esBuena())
+    }
+    test "no es un hogar bueno" { 
+        assert.equals(false, hogarDos.esBuena())
+    }
 
-test "es una huerta buena" {
-    assert.equals(true, huerta.esBuena())
-}
-test "no es una huerta buena" {
-    assert.equals(false, huertaDos.esBuena())
-}
-test "es una mascota buena"{
-    assert.equals(true, mascota.esBuena())
-}
-test "no es una mascota buena"{
-    assert.equals(false, mascotaDos.esBuena())
-}
-test "es un barrio copado"{
-    barrio.agregarElemento(hogar)
-    barrio.agregarElemento(mascota)
-    barrio.agregarElemento(huertaDos)
-    assert.equals([hogar, mascota, huertaDos], barrio.elementos())
-    assert.that(barrio.esCopado() )
-}
+    test "es una huerta buena" {
+        assert.equals(true, huerta.esBuena())
+    }
+    test "no es una huerta buena" {
+        assert.equals(false, huertaDos.esBuena())
+    }
+    test "es una mascota buena"{
+        assert.equals(true, mascota.esBuena())
+    }
+    test "no es una mascota buena"{
+        assert.equals(false, mascotaDos.esBuena())
+    }
+    test "es un barrio copado"{
+        barrio.agregarElemento(hogar)
+        barrio.agregarElemento(mascota)
+        barrio.agregarElemento(huertaDos)
+        assert.equals([hogar, mascota, huertaDos], barrio.elementos())
+        assert.that(barrio.esCopado() )
+    }
 
-test "no es un barrio copado"{
-    barrio.agregarElemento(hogarDos)
-    barrio.agregarElemento(mascotaDos)
-    barrio.agregarElemento(huerta)
-    assert.equals([hogarDos, mascotaDos, huerta], barrio.elementos())
-    assert.that(!barrio.esCopado() )
-}
-test "no es barrio copado dos"{
-    barrio.agregarElemento(hogarDos)
-    barrio.agregarElemento(mascotaDos)
-    barrio.agregarElemento(huerta)
-    barrio.agregarElemento(hogar)
-    assert.equals([hogarDos, mascotaDos,huerta, hogar], barrio.elementos())
-    assert.that(!barrio.esCopado())
+    test "no es un barrio copado"{
+        barrio.agregarElemento(hogarDos)
+        barrio.agregarElemento(mascotaDos)
+        barrio.agregarElemento(huerta)
+        assert.equals([hogarDos, mascotaDos, huerta], barrio.elementos())
+        assert.that(!barrio.esCopado() )
+    }
+    test "no es barrio copado dos"{
+        barrio.agregarElemento(hogarDos)
+        barrio.agregarElemento(mascotaDos)
+        barrio.agregarElemento(huerta)
+        barrio.agregarElemento(hogar)
+        assert.equals([hogarDos, mascotaDos,huerta, hogar], barrio.elementos())
+        assert.that(!barrio.esCopado())
 
-}
+    }
 }
 describe"plagas"{
     const cucaracha = new Cucaracha (cantDePoblacion = 100, peso = 12)
@@ -98,14 +98,14 @@ describe "ataque" {
     const hogar = new Hogar( nivelDeMugre= 20 )
     const huerta = new Huerta( capacidad= 50, nivelDeProduccion = 30 )
     const mascota = new Mascota (nivelDeSalud = 300)
-  test "ataque de cucaracha a un hogar" {
-    hogar.esAtacada(cucaracha)
-    assert.equals(60, hogar.nivelDeMugre())
-  }
-  test "mosquitos atacan una huerta"{
-    huerta.esAtacada(mosquito)
-    assert.equals(25, huerta.capacidad())
-  }
+    test "ataque de cucaracha a un hogar" {
+        hogar.esAtacada(cucaracha)
+        assert.equals(60, hogar.nivelDeMugre())
+    }
+    test "mosquitos atacan una huerta"{
+        huerta.esAtacada(mosquito)
+        assert.equals(25, huerta.capacidad())
+    }
     test "pulgas que atacan a una mascota"{
         mascota.esAtacada(pulga)
         assert.equals(200,  mascota.nivelDeSalud())
