@@ -44,12 +44,8 @@ class Pulga inherits Plaga{
     }
 }
 
-class Garrapata inherits Plaga{
-
-    override method nivelDeDaño(){
-       return  self.cantDePoblacion() * 2
-    }
-
+class Garrapata inherits Pulga{
+    
     override method efectoDeAtaque(){
         cantDePoblacion += cantDePoblacion * 0.2
     }

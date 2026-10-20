@@ -1,6 +1,7 @@
 import plagas.*
 import elemento.*
-describe "elementos" {
+describe "test sobre los elementos" {
+    
     const hogar = new Hogar( nivelDeMugre= 10, confort = 30 )
     const hogarDos = new Hogar( nivelDeMugre= 10, confort = 18 )
     const huerta = new Huerta( capacidad= 50, nivelDeProduccion = 30 )
@@ -8,24 +9,33 @@ describe "elementos" {
     const mascota = new Mascota (nivelDeSalud = 300)
     const mascotaDos = new Mascota(nivelDeSalud = 250)
     test "es un hogar bueno" {
-        assert.equals(true, hogar.esBuena())
+        assert.that(hogar.esBuena())
     }
     test "no es un hogar bueno" { 
-        assert.equals(false, hogarDos.esBuena())
+        assert.notThat(hogarDos.esBuena())
     }
 
     test "es una huerta buena" {
-        assert.equals(true, huerta.esBuena())
+        assert.that(huerta.esBuena())
     }
     test "no es una huerta buena" {
-        assert.equals(false, huertaDos.esBuena())
+        assert.notThat(huertaDos.esBuena())
     }
     test "es una mascota buena"{
-        assert.equals(true, mascota.esBuena())
+        assert.that(mascota.esBuena())
     }
     test "no es una mascota buena"{
-        assert.equals(false, mascotaDos.esBuena())
+        assert.notThat(mascotaDos.esBuena())
     }
+}
+describe "test sobre los barrios"{
+
+    const hogar = new Hogar( nivelDeMugre= 10, confort = 30 )
+    const hogarDos = new Hogar( nivelDeMugre= 10, confort = 18 )
+    const huerta = new Huerta( capacidad= 50, nivelDeProduccion = 30 )
+    const huertaDos = new Huerta( capacidad= 25, nivelDeProduccion = 30 )
+    const mascota = new Mascota (nivelDeSalud = 300)
+    const mascotaDos = new Mascota(nivelDeSalud = 250)
     test "es un barrio copado"{
         barrio.agregarElemento(hogar)
         barrio.agregarElemento(mascota)
@@ -39,19 +49,21 @@ describe "elementos" {
         barrio.agregarElemento(mascotaDos)
         barrio.agregarElemento(huerta)
         assert.equals([hogarDos, mascotaDos, huerta], barrio.elementos())
-        assert.that(!barrio.esCopado() )
+        assert.notThat(barrio.esCopado())
     }
-    test "no es barrio copado dos"{
+    test "no es barrio copado cuando es empate"{
         barrio.agregarElemento(hogarDos)
         barrio.agregarElemento(mascotaDos)
         barrio.agregarElemento(huerta)
         barrio.agregarElemento(hogar)
         assert.equals([hogarDos, mascotaDos,huerta, hogar], barrio.elementos())
-        assert.that(!barrio.esCopado())
+        assert.notThat(barrio.esCopado())
 
     }
 }
-describe"plagas"{
+
+describe"test sobre las plagas"{
+
     const cucaracha = new Cucaracha (cantDePoblacion = 100, peso = 12)
     const cucarachaDos = new Cucaracha (cantDePoblacion = 75, peso = 5)
     const pulga = new Pulga(cantDePoblacion = 50)
@@ -71,27 +83,28 @@ describe"plagas"{
         assert.equals(180, mosquito.nivelDeDaño())
     }
     test "cucaracha que transmite enfermedad"{
-        assert.equals(true, cucaracha.transmitenEnfermedad())
+        assert.that( cucaracha.transmitenEnfermedad())
     }
     test "cucaracha que no transmite enfermedad"{
-        assert.equals(false, cucarachaDos.transmitenEnfermedad())
+        assert.notThat(cucarachaDos.transmitenEnfermedad())
     }
     test "pulga que transmite enfermedad"{
-        assert.equals(true, pulga.transmitenEnfermedad())
+        assert.that(pulga.transmitenEnfermedad())
     }
     test "garrapata que transmite enfermedad"{
-        assert.equals(true, garrapata.transmitenEnfermedad())
+        assert.that(garrapata.transmitenEnfermedad())
     }
     test "mosquito que transmite enfermedad"{
-        assert.equals(true, mosquito.transmitenEnfermedad())
+        assert.that(mosquito.transmitenEnfermedad())
     }
     test "mosquito que no transmite enfermedad"{
-        assert.equals(false, mosquitoDos.transmitenEnfermedad())
+        assert.notThat(mosquitoDos.transmitenEnfermedad())
     }
 
 
 }
-describe "ataque" {
+describe "test sobre ataques" {
+
     const cucaracha = new Cucaracha (cantDePoblacion = 80)
     const mosquito = new Mosquito (cantDePoblacion = 150)
     const pulga = new Pulga(cantDePoblacion = 50)
@@ -112,6 +125,7 @@ describe "ataque" {
     }
 }
 describe "ataques con efecto en los elementos y en las plagas"{
+
     const cucaracha = new Cucaracha (cantDePoblacion = 80, peso= 5)
     const cucarachaDos = new Cucaracha (cantDePoblacion = 3, peso = 1)
     const mosquito = new Mosquito (cantDePoblacion = 200)
