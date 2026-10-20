@@ -21,10 +21,11 @@ class Hogar inherits Elemento{
 }
 class Huerta inherits Elemento{
     var property capacidad = 0
-    var property nivelDeProduccion = 0
+    var property nivel = nivelDeProduccion.nivelDelMes()
 
     override method esBuena(){
-       return capacidad > nivelDeProduccion
+       return capacidad >  nivel
+
     }
 
     override method esAtacada(unaPlaga){
@@ -65,5 +66,9 @@ object barrio{
     return  elementos.count({elemento => elemento.esBuena()}) > 
             elementos.count({elemento => !elemento.esBuena()})
     }
+
+}
+object nivelDeProduccion{
+    var property nivelDelMes = 0
 
 }

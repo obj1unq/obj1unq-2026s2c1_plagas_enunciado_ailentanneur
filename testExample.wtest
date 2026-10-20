@@ -4,8 +4,8 @@ describe "test sobre los elementos" {
     
     const hogar = new Hogar( nivelDeMugre= 10, confort = 30 )
     const hogarDos = new Hogar( nivelDeMugre= 10, confort = 18 )
-    const huerta = new Huerta( capacidad= 50, nivelDeProduccion = 30 )
-    const huertaDos = new Huerta( capacidad= 25, nivelDeProduccion = 30 )
+    const huerta = new Huerta( capacidad= 50, nivel = 30 )
+    const huertaDos = new Huerta( capacidad= 25, nivel = 30 )
     const mascota = new Mascota (nivelDeSalud = 300)
     const mascotaDos = new Mascota(nivelDeSalud = 250)
     test "es un hogar bueno" {
@@ -32,8 +32,8 @@ describe "test sobre los barrios"{
 
     const hogar = new Hogar( nivelDeMugre= 10, confort = 30 )
     const hogarDos = new Hogar( nivelDeMugre= 10, confort = 18 )
-    const huerta = new Huerta( capacidad= 50, nivelDeProduccion = 30 )
-    const huertaDos = new Huerta( capacidad= 25, nivelDeProduccion = 30 )
+    const huerta = new Huerta( capacidad= 50, nivel = 30 )
+    const huertaDos = new Huerta( capacidad= 25, nivel = 30 )
     const mascota = new Mascota (nivelDeSalud = 300)
     const mascotaDos = new Mascota(nivelDeSalud = 250)
     test "es un barrio copado"{
@@ -109,7 +109,7 @@ describe "test sobre ataques" {
     const mosquito = new Mosquito (cantDePoblacion = 150)
     const pulga = new Pulga(cantDePoblacion = 50)
     const hogar = new Hogar( nivelDeMugre= 20 )
-    const huerta = new Huerta( capacidad= 50, nivelDeProduccion = 30 )
+    const huerta = new Huerta( capacidad= 50, nivel = 30 )
     const mascota = new Mascota (nivelDeSalud = 300)
     test "ataque de cucaracha a un hogar" {
         hogar.esAtacada(cucaracha)
@@ -133,7 +133,7 @@ describe "ataques con efecto en los elementos y en las plagas"{
     const pulga = new Pulga(cantDePoblacion = 120)
     const pulgaDos = new Pulga(cantDePoblacion = 4)
     const hogar = new Hogar( nivelDeMugre= 10 )
-    const huerta = new Huerta( capacidad= 50, nivelDeProduccion = 30 )
+    const huerta = new Huerta( capacidad= 50, nivel = 30 )
     const mascota = new Mascota (nivelDeSalud = 300)
     const mascotaDos = new Mascota (nivelDeSalud = 240)
 
